@@ -9020,17 +9020,16 @@ const openIssues = issues
     return openIssues
   }, [])
   
-  const nonAutomaticIssues = issues
-    .reduce((totalIssues, issue) => {
-      const isAutomatic = issue.body.includes('automatically created by learn.co')
-      if (!isAutomatic) {
-        totalIssues.push(issue)
-      }
-      return totalIssues
-    }, [])
+const nonAutomaticIssues = issues
+  .reduce((totalIssues, issue) => {
+    const isAutomatic = issue.body.includes('automatically created by learn.co')
+    if (!isAutomatic) {
+      totalIssues.push(issue)
+    }
+    return totalIssues
+  }, [])
   
-
-const $tbody = document.getElementById('results');
+const $tbody = document.getElementById('results')
 $tbody.innerHTML = nonAutomaticIssues
   .map(issue => `<tr>
     <td>${issue.body}</td>
@@ -9038,4 +9037,4 @@ $tbody.innerHTML = nonAutomaticIssues
     <td>${issue.state}</td>
     </tr>`
   )
-  .join('');
+  .join('')
